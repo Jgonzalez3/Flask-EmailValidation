@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Success</title>
+</head>
+<body>
+    <div class="container">
+        <p>
+            The email address you entered ({{submitted_email}}) is a VALID email address! Thank you!
+        </p>
+        <h1>Email Address</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% for user_emails in all_emails %}
+            <p>{{user_emails['email']}} <span>{{user_emails['created_at'].strftime("%m/%d/%y %H:%M %p")}}</span></p>
+        {% endfor %}
+        
+    </div>
+</body>
+</html>
